@@ -34,7 +34,7 @@ describe('AddCommentUseCase', () => {
         id: 'comment-123',
         content: useCasePayload.content,
         threadId: useCasePayload.threadId,
-        date: '2022-12-30T07:26:17.000Z',
+        date: new Date('2024-07-29T00:00:00.000Z'),
         owner: useCasePayload.owner,
       }),
     ));

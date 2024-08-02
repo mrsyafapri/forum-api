@@ -1,6 +1,6 @@
 const NewComment = require('../NewComment');
 
-describe('a NewComment entities', () => {
+describe('NewComment entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // Arrange
     const payload = {

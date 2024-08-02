@@ -33,7 +33,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
             WHERE replies.id = $1
             AND replies.comment_id = $2
             AND comments.thread_id = $3
-            AND replies.is_deleted = false`,
+            AND replies.is_delete = false`,
       values: [replyId, commentId, threadId],
     };
 
@@ -63,7 +63,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
 
   async deleteReplyById(id) {
     const query = {
-      text: 'UPDATE replies SET is_deleted=TRUE WHERE id=$1',
+      text: 'UPDATE replies SET is_delete=TRUE WHERE id=$1',
       values: [id],
     };
 

@@ -17,20 +17,19 @@ const RepliesTableTestHelper = {
     await pool.query(query);
   },
 
-  async getReplyById(id) {
+  async findRepliesById(id) {
     const query = {
       text: 'SELECT * FROM replies WHERE id = $1',
       values: [id],
     };
 
     const result = await pool.query(query);
-
     return result.rows;
   },
 
   async deleteReplyById(id) {
     const query = {
-      text: 'UPDATE replies SET is_deleted=TRUE WHERE id=$1',
+      text: 'UPDATE replies SET is_delete=TRUE WHERE id=$1',
       values: [id],
     };
     await pool.query(query);

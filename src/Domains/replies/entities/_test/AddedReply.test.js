@@ -1,6 +1,6 @@
 const AddedReply = require('../AddedReply');
 
-describe('a AddedReply entities', () => {
+describe('AddedReply entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // arrange
     const payload = {

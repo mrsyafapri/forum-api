@@ -1,17 +1,14 @@
+const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
+const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
+const CommentsTableTestHelper = require('../../../../tests/CommentsTestTableHelper');
+const RepliesTableTestHelper = require('../../../../tests/RepliesTableTestHelper');
+const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
+const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
+const NewReply = require('../../../Domains/replies/entities/NewReply');
+const AddedReply = require('../../../Domains/replies/entities/AddedReply');
 const pool = require('../../database/postgres/pool');
 const ReplyRepository = require('../../../Domains/replies/ReplyRepository');
 const ReplyRepositoryPostgres = require('../ReplyRepositoryPostgres');
-
-const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
-const ThreadsTableTestHelper = require('../../../../tests/ThreadTableTestHelper');
-const CommentsTableTestHelper = require('../../../../tests/CommentTestTableHelper');
-const RepliesTableTestHelper = require('../../../../tests/RepliesTableTestHelper');
-
-const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
-const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
-
-const NewReply = require('../../../Domains/replies/entities/NewReply');
-const AddedReply = require('../../../Domains/replies/entities/AddedReply');
 
 describe('ReplyRepositoryPostgres', () => {
   it('should be instance of ReplyRepository domain', () => {
@@ -62,7 +59,9 @@ describe('ReplyRepositoryPostgres', () => {
 
         // action
         const addedReply = await replyRepositoryPostgres.addReply(newReply);
-        const replies = await RepliesTableTestHelper.getReplyById('reply-123');
+        const replies = await RepliesTableTestHelper.findRepliesById(
+          'reply-123',
+        );
 
         // assert
         expect(addedReply).toStrictEqual(
@@ -158,9 +157,11 @@ describe('ReplyRepositoryPostgres', () => {
         await replyRepositoryPostgres.deleteReplyById('reply-123');
 
         // assert
-        const replies = await RepliesTableTestHelper.getReplyById('reply-123');
+        const replies = await RepliesTableTestHelper.findRepliesById(
+          'reply-123',
+        );
         expect(replies).toHaveLength(1);
-        expect(replies[0].is_deleted).toEqual(true);
+        expect(replies[0].is_delete).toEqual(true);
       });
 
       it('should throw NotFoundError when reply is not available', async () => {

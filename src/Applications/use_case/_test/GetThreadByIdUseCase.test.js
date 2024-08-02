@@ -23,7 +23,7 @@ describe('GetThreadUseCase', () => {
         username: 'dicoding',
         date: '2022',
         content: 'ini adalah isi komentar',
-        is_deleted: false,
+        is_delete: false,
       },
     ];
 
@@ -34,15 +34,15 @@ describe('GetThreadUseCase', () => {
         date: '2022',
         username: 'jhon',
         comment_id: 'comment-123',
-        is_deleted: false,
+        is_delete: false,
       },
     ];
 
     const mappedComments = expectedComments.map(
-      ({ is_deleted: deletedComment, ...otherProperties }) => otherProperties,
+      ({ is_delete: deletedComment, ...otherProperties }) => otherProperties,
     );
     const mappedReplies = expectedReplies.map(
-      ({ comment_id, is_deleted, ...otherProperties }) => otherProperties,
+      ({ comment_id, is_delete, ...otherProperties }) => otherProperties,
     );
 
     const expectedCommentsAndReplies = [
@@ -113,7 +113,7 @@ describe('GetThreadUseCase', () => {
         username: 'dicoding',
         date: '2022',
         content: '**komentar telah dihapus**',
-        is_deleted: true,
+        is_delete: true,
       },
     ];
 
@@ -124,15 +124,15 @@ describe('GetThreadUseCase', () => {
         date: '2022',
         username: 'jhon',
         comment_id: 'comment-123',
-        is_deleted: true,
+        is_delete: true,
       },
     ];
 
     const mappedComments = expectedComments.map(
-      ({ is_deleted: deletedComment, ...otherProperties }) => otherProperties,
+      ({ is_delete: deletedComment, ...otherProperties }) => otherProperties,
     );
     const mappedReplies = expectedReplies.map(
-      ({ comment_id, is_deleted, ...otherProperties }) => otherProperties,
+      ({ comment_id, is_delete, ...otherProperties }) => otherProperties,
     );
 
     const expectedCommentsAndReplies = [

@@ -2,7 +2,7 @@ const pool = require('../../database/postgres/pool');
 const container = require('../../container');
 const createServer = require('../createServer');
 const ServerTestHelper = require('../../../../tests/ServerTestHelper');
-const ThreadTableTestHelper = require('../../../../tests/ThreadTableTestHelper');
+const ThreadTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
 const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
 
 describe('/threads endpoint', () => {
@@ -16,8 +16,8 @@ describe('/threads endpoint', () => {
     it('should response 401 when request missing authentication', async () => {
       // Arrange
       const requestPayload = {
-        title: 'lorem ipsum',
-        body: 'dolor sit amet',
+        title: 'Indonesia Emas?',
+        body: 'Indonesia saat ini sudah mulai maju.',
       };
       const server = await createServer(container);
 
@@ -38,10 +38,9 @@ describe('/threads endpoint', () => {
     it('should response 400 when request payload not contain needed property', async () => {
       // Arrange
       const requestPayload = {
-        title: 'lorem ipsum',
+        title: 'Indonesia Emas?',
       };
       const server = await createServer(container);
-
       const { accessToken } = await ServerTestHelper.getAccessTokenAndUserIdHelper({ server });
 
       // Action
@@ -64,11 +63,10 @@ describe('/threads endpoint', () => {
     it('should response 400 when request payload not meet data type specification', async () => {
       // Arrange
       const requestPayload = {
-        title: 'lorem ipsum',
+        title: 'Indonesia Emas?',
         body: true,
       };
       const server = await createServer(container);
-
       const { accessToken } = await ServerTestHelper.getAccessTokenAndUserIdHelper({ server });
 
       // Action
@@ -91,11 +89,10 @@ describe('/threads endpoint', () => {
     it('should response 201 and persisted thread', async () => {
       // Arrange
       const requestPayload = {
-        title: 'lorem ipsum',
-        body: 'dolor sit amet',
+        title: 'Indonesia Emas?',
+        body: 'Indonesia saat ini sudah mulai maju.',
       };
       const server = await createServer(container);
-
       const { accessToken } = await ServerTestHelper.getAccessTokenAndUserIdHelper({ server });
 
       // Action

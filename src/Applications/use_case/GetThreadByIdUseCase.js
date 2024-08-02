@@ -15,14 +15,14 @@ class GetThreadByIdUseCase {
       id: comment.id,
       username: comment.username,
       date: comment.date,
-      content: comment.is_deleted
+      content: comment.is_delete
         ? '**komentar telah dihapus**'
         : comment.content,
       replies: replies
         .filter((reply) => reply.comment_id === comment.id)
         .map((reply) => ({
           id: reply.id,
-          content: reply.is_deleted
+          content: reply.is_delete
             ? '**balasan telah dihapus**'
             : reply.content,
           date: reply.date,

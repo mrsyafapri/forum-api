@@ -1,14 +1,13 @@
+const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
+const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
+const CommentsTableTestHelper = require('../../../../tests/CommentsTestTableHelper');
+const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
+const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
+const NewComment = require('../../../Domains/comments/entities/NewComment');
+const AddedComment = require('../../../Domains/comments/entities/AddedComment');
 const pool = require('../../database/postgres/pool');
 const CommentRepository = require('../../../Domains/comments/CommentRepository');
 const CommentRepositoryPostgres = require('../CommentRepositoryPostgres');
-const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
-const ThreadsTableTestHelper = require('../../../../tests/ThreadTableTestHelper');
-const CommentsTableTestHelper = require('../../../../tests/CommentTestTableHelper');
-const AuthorizationError = require('../../../Commons/exceptions/AuthorizationError');
-const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
-
-const NewComment = require('../../../Domains/comments/entities/NewComment');
-const AddedComment = require('../../../Domains/comments/entities/AddedComment');
 
 describe('CommentRepositoryPostgres', () => {
   it('should be instance of CommentRepository domain', () => {
@@ -58,7 +57,7 @@ describe('CommentRepositoryPostgres', () => {
         const addedComment = await commentRepositoryPostgres.addComment(
           newComment,
         );
-        const comments = await CommentsTableTestHelper.getCommentById(
+        const comments = await CommentsTableTestHelper.findCommentsById(
           addedComment.id,
         );
 
@@ -280,10 +279,10 @@ describe('CommentRepositoryPostgres', () => {
 
         await commentRepositoryPostgres.deleteCommentById('comment-123');
 
-        const comment = await CommentsTableTestHelper.getCommentById(
+        const comment = await CommentsTableTestHelper.findCommentsById(
           'comment-123',
         );
-        expect(comment[0].is_deleted).toEqual(true);
+        expect(comment[0].is_delete).toEqual(true);
       });
     });
   });

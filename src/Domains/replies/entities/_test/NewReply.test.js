@@ -1,6 +1,6 @@
 const NewReply = require('../NewReply');
 
-describe('a NewReply entities', () => {
+describe('NewReply entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // arrange
     const payload = {

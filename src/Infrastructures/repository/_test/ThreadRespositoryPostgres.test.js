@@ -1,12 +1,12 @@
 const UserTableTestHelper = require('../../../../tests/UsersTableTestHelper');
-const ThreadTableTestHelper = require('../../../../tests/ThreadTableTestHelper');
-const CommentTableTestHelper = require('../../../../tests/CommentTestTableHelper');
+const ThreadTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
+const CommentTableTestHelper = require('../../../../tests/CommentsTestTableHelper');
 const RepliesTableTestHelper = require('../../../../tests/RepliesTableTestHelper');
-const ThreadRepositoryPostgres = require('../ThreadRepositoryPostgres');
 const NotFoundError = require('../../../Commons/exceptions/NotFoundError');
 const NewThread = require('../../../Domains/threads/entities/NewThread');
 const AddedThread = require('../../../Domains/threads/entities/AddedThread');
 const pool = require('../../database/postgres/pool');
+const ThreadRepositoryPostgres = require('../ThreadRepositoryPostgres');
 
 describe('ThreadRepositoryPostgres', () => {
   afterEach(async () => {
@@ -182,7 +182,7 @@ describe('ThreadRepositoryPostgres', () => {
         date: new Date('2024-07-29T00:00:00.000Z'),
         content: 'sebuah balasan',
         owner: 'user-123',
-        is_deleted: false,
+        is_delete: false,
       });
     });
   });

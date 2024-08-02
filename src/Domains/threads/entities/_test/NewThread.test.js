@@ -1,6 +1,6 @@
 const NewThread = require('../NewThread');
 
-describe('a NewThread entities', () => {
+describe('NewThread entities', () => {
   it('should throw error when payload not contain needed property', () => {
     // Arrange
     const payload = {

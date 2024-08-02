@@ -1,6 +1,6 @@
 const ReplyRepository = require('../ReplyRepository');
 
-describe('a ReplyRepository interface', () => {
+describe('ReplyRepository interface', () => {
   it('should throw error when invoke abstract behavior', async () => {
     // Arrange
     const replyRepository = new ReplyRepository();

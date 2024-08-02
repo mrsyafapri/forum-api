@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 const pool = require('../src/Infrastructures/database/postgres/pool');
 
-const ThreadTableTestHelper = {
+const ThreadsTableTestHelper = {
   async addThread({
     id = 'thread-123',
     title = 'sebuah thread',
@@ -32,4 +32,4 @@ const ThreadTableTestHelper = {
   },
 };
 
-module.exports = ThreadTableTestHelper;
+module.exports = ThreadsTableTestHelper;
